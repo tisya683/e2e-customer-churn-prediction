@@ -62,7 +62,7 @@ def main():
             refit=True
         )
 
-        # Tune using training data only.
+      
         search.fit(X_train, y_train)
 
         mlflow.log_params(search.best_params_)
@@ -82,7 +82,7 @@ def main():
 
         mlflow.log_metrics(test_metrics)
 
-        # Save the whole pipeline: preprocessing plus classifier.
+        #save best model
         mlflow.sklearn.log_model(
             best_lr,
             name="best_lr_model",
