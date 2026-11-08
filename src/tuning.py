@@ -78,7 +78,7 @@ def main():
         best_pred = best_lr.predict(X_test)
         best_scores = best_lr.predict_proba(X_test)[:, 1]
 
-        test_metrics = compute_metrics(y_test,best_pred,best_scores,plot=True,label="Tuned Logistic Regression",)
+        test_metrics = compute_metrics(y_test,best_pred,best_scores,plot=False,label="Tuned Logistic Regression",)
 
         mlflow.log_metrics(test_metrics)
 
