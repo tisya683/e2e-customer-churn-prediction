@@ -3,14 +3,12 @@ from pydantic import BaseModel
 import pandas as pd
 import mlflow
 import mlflow.sklearn
-
-
-#connect to mlflow server
-mlflow.set_tracking_uri("http://127.0.0.1:5000")
+from pathlib import Path
 
 #load best model
-MODEL_URI = "models:/churn_prediction_model/1"
-model = mlflow.sklearn.load_model(MODEL_URI)
+BASE_DIR=Path(__file__).resolve().parent.parent
+MODEL_PATH= BASE_DIR / "models" / "best_churn_model"
+model=mlflow.sklearn.load_model(str(MODEL_PATH))
 
 
 #create. fastapi app instance 
